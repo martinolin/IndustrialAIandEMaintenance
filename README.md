@@ -22,7 +22,7 @@ after ground have been filtered by removeing the most previlent value + 1:
 #Task 2:
 
 For this task we follow https://machinelearningknowledge.ai/tutorial-for-dbscan-clustering-in-python-sklearn/ to get the optimal value for DBSCAN, at first we have this classification for the data dataset1.npy:
-<img width="905" height="911" alt="bild" src="https://github.com/user-attachments/assets/6c873a52-130a-484b-92d1-94b9e536059c" />
+<img width="894" height="888" alt="bild" src="https://github.com/user-attachments/assets/ebb4b1ce-c4e0-491d-b3e0-613d79ea14f1" />
 
 after we do a elbow plot and find the elbow, the optimal value for DBSCAN's cluster radius, which ends up beeing: 0.45991955803735224
 
