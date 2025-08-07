@@ -41,6 +41,40 @@ We do an elbow plot and get an optimal value as 0.5259980993096163 for the DBSCA
 The resulting classification then looks like this:
 <img width="894" height="918" alt="bild" src="https://github.com/user-attachments/assets/5369830c-6577-4e1a-90d1-83f9539e8d70" />
 
+#Task 3
+
+Here we are to look at the largest clusters. For dataset1.npy we get the following:
+<img width="496" height="360" alt="bild" src="https://github.com/user-attachments/assets/037dddfd-eaee-4d25-8021-a8699b6d881a" />
+min x= 10.51699999999255
+max x= 21.521000000007916
+min y= 80.04000000003725
+max y= 95.09800000023097
+
+this does not look like anyting we are after, the second most populated class does:
+<img width="495" height="356" alt="bild" src="https://github.com/user-attachments/assets/89b3b3e0-54ac-4c5a-ae69-864fd2f751a2" />
+min x= 27.23200000001816
+max x= 49.12599999998929
+min y= 82.26200000010431
+max y= 139.15000000037253
+
+
+
+We get forest as the most populates class in dataset2:
+
+<img width="365" height="359" alt="bild" src="https://github.com/user-attachments/assets/cb2b9d93-c500-4384-8e3f-2a5f09d06f29" />
+min x= 49.46300000001793
+max x= 55.312999999994645
+min y= 63.26699999999255
+max y= 76.09700000006706
+
+however if take the fifth most populated class we get something that looks reasonable:
+
+<img width="392" height="346" alt="bild" src="https://github.com/user-attachments/assets/9662206f-3fbe-4f70-8dd9-a08117a82a36" />
+min x= 0.0
+max x= 69.80100000000675
+min y= 0.0030000004917383194
+max y= 79.98699999973178
+
 
 
 
