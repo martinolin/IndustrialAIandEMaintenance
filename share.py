@@ -85,7 +85,7 @@ show_cloud(pcd_above_ground)
 # %%
 unoptimal_eps = 10
 # find the elbow
-clustering = DBSCAN(eps = unoptimal_eps, min_samples=5).fit(pcd_above_ground)
+clustering = DBSCAN(eps = unoptimal_eps, min_samples=5).fit(pcd_above_ground) # typically min_sample is twice the dim, 6
 
 #%%
 clusters = len(set(clustering.labels_)) - (1 if -1 in clustering.labels_ else 0)
@@ -124,8 +124,49 @@ Add the elbow plots to your github project Readme
 Add the cluster plots to your github project Readme
 '''
 
+#make elbow plot
+from sklearn.neighbors import NearestNeighbors
+k = 5  # Typically MinPts
+neighbors = NearestNeighbors(n_neighbors=k)
+neighbors_fit = neighbors.fit(pcd_above_ground)
+distances, indices = neighbors_fit.kneighbors(pcd_above_ground)
+k_distances = np.sort(distances[:, k-1],axis=0)
+plt.plot(k_distances)
+plt.xlabel("Points sorted by distance")
+plt.ylabel(f"{k}-th Nearest Neighbor Distance")
+plt.title("K-Distance Graph")
+plt.grid(True)
+plt.show()
+
+#get the elbow:
+from kneed import KneeLocator
+
+i = np.arange(len(k_distances))
+knee = KneeLocator(i, k_distances, S=1, curve='convex', direction='increasing', interp_method='polynomial')
+
+fig = plt.figure(figsize=(5, 5))
+knee.plot_knee()
+plt.xlabel("Points")
+plt.ylabel("Distance")
+
+print("optimal eps value:" + str(k_distances[knee.knee])) # the optimal value
 
 
+#now print this
+clustering = DBSCAN(eps = k_distances[knee.knee], min_samples=5).fit(pcd_above_ground) # typically min_sample is twice the dim, 6
+clusters = len(set(clustering.labels_)) - (1 if -1 in clustering.labels_ else 0)
+colors = [plt.cm.Spectral(each) for each in np.linspace(0, 1, clusters)]
+# Plotting resulting clusters
+plt.figure(figsize=(10,10))
+plt.scatter(pcd_above_ground[:,0], 
+            pcd_above_ground[:,1],
+            c=clustering.labels_,
+            cmap=matplotlib.colors.ListedColormap(colors),
+            s=2)
+plt.title('DBSCAN: %d clusters' % clusters,fontsize=20)
+plt.xlabel('x axis',fontsize=14)
+plt.ylabel('y axis',fontsize=14)
+plt.show()
 
 #%%
 '''
