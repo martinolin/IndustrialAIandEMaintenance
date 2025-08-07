@@ -11,11 +11,11 @@ By looking at a histogram of the hight of each point, it seen that the lower par
 Removeing the two lowest bars the following point cloud remains:
 <img width="476" height="385" alt="image" src="https://github.com/user-attachments/assets/5af1dc23-1880-4cbf-975e-d36cb4f769a2" />
 
-This assumed a ground level of the minimum pixel value + 2, which corresponded to a pixel value of 61.6 for the hight. 
+This assumed a ground level of the most prominent pixel value + 1, which corresponded to a pixel value of 61.6 for the hight. 
 
 Doing the same plots for dataset2.npy gives first without filtering ground:
 <img width="429" height="394" alt="image" src="https://github.com/user-attachments/assets/5c299dbd-73b1-41d2-bb97-6ed77194dbd4" />
-after ground have been filtered with values below the same value as before (the min value of the data points + 2):
+after ground have been filtered by removeing the most previlent value + 1:
 <img width="436" height="380" alt="image" src="https://github.com/user-attachments/assets/7d934edc-1556-4f1b-a818-a2436dbf1cb8" />
 
 
